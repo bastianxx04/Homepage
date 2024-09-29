@@ -76,6 +76,10 @@ body {
   overflow: hidden; /* Hide scrollbars */
 }
 
+html {
+  min-height: 100vh;
+}
+
 /* ==== Cursor styles ==== */
 * {
   cursor: url("../img/cursor_default.png"), default;
