@@ -1,0 +1,487 @@
+/* ======== jQuery overrides go here ======== */
+.ui-dialog-titlebar.ui-widget-header {
+  background: #9f66ca url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50%
+    50% repeat-x;
+}
+.ui-widget-header {
+  background: #9f66ca;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  background: #f6efa6;
+}
+.ui-tabs .ui-tabs-nav li {
+  background: #f39bb7;
+}
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: 1px solid #2d2d2d;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  border: 1px solid #2d2d2d;
+}
+.ui-widget.ui-widget-content {
+  background-color: #f6efa6;
+  border: 1px solid #2d2d2d;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: monospace;
+}
+
+.ui-widget {
+  font-family: monospace;
+}
+
+.ui-widget input[type="button"] {
+  background: #9f66ca;
+  border: 1px solid #97133e;
+  border-radius: 8px;
+  font-family: monospace;
+  padding: 0.3em;
+  min-width: 75px;
+}
+.ui-widget input[type="button"]:hover {
+  background-color: #faa5c1;
+}
+
+.ui-accordion .ui-accordion-header {
+  background: #f6ab6c;
+  font-family: monospace;
+}
+
+.startMenuLinks .ui-state-active {
+  background: #9f66ca;
+  border: 0px;
+}
+
+.ui-draggable,
+.ui-dialog-titlebar {
+  cursor: url("../img/cursor_move.png"), move;
+}
+
+/* ======== My styles start here ======== */
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+/* ==== Cursor styles ==== */
+* {
+  cursor: url("../img/cursor_default.png"), default;
+}
+a {
+  cursor: url("../img/cursor_pointer.png"), pointer;
+}
+.target-element {
+  cursor: url("../img/cursor_crosshair.png"), crosshair;
+}
+
+body {
+  background-color: #6ea6a8;
+  background-image: url("../img/SleepySkelly_dithered.png");
+  background-size: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Courier", monospace;
+}
+
+body,
+p,
+div {
+  font-family: monospace;
+  scrollbar-color: #9f66ca #f6ab6c;
+}
+input[type="button"],
+input[type="file"] {
+  background: #9f66ca;
+  border: 1px solid #97133e;
+  border-radius: 8px;
+  font-family: monospace;
+  padding: 0.3em;
+  margin-bottom: 0.5em;
+  min-width: 75px;
+  box-shadow: inset 1px 1px 0px 0px #f6ab6c, inset -1px -1px 0px 0px #97133e;
+}
+input[type="button"]:hover {
+  cursor: url("../img/cursor_pointer.png"), pointer;
+}
+input[type="text"] {
+  font-family: monospace;
+  padding: 0.3em;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+}
+select {
+  font-family: monospace;
+  font-size: 1em;
+  background-color: #f6ab6c;
+  padding: 0.4em;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+iframe {
+  border: 0px;
+}
+hr {
+  border: 2px dotted #000;
+}
+
+details {
+  margin: 1em 0;
+  max-width: 100%;
+  background-color: #fffce0;
+  overflow: auto;
+}
+summary {
+  font-weight: bold;
+  border-bottom: 1px solid #97133e;
+  background-color: #f6ab6c;
+  padding: 1em;
+}
+details p {
+  padding: 1em;
+}
+
+div#desktopIcons {
+  float: right;
+  text-align: center;
+  padding: 0.5em;
+  margin-bottom: 1.5em;
+}
+#desktopIcons div {
+  float: right;
+  margin-right: 1em;
+}
+#desktopIcons p {
+  display: block;
+}
+#desktopIcons span,
+#desktopIcons a span {
+  background-color: #ffffff;
+  border: 1px solid #353535;
+  text-decoration: none;
+  padding: 2px;
+}
+div.window {
+  border: 1px solid #353535;
+  width: 600px;
+  position: absolute;
+  height: auto;
+  box-shadow: 1px 1px 0px 0px #a02a50, -1px -1px 0px 0px #a02a50,
+    2px 2px 5px 5px rgb(31, 19, 32, 0.3);
+}
+div.menuBar {
+  border-bottom: 1px solid #353535;
+  background-color: #9f66ca;
+  padding: 3px;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 0px 0px #f6ab6c, inset -1px -1px 0px 0px #97133e;
+}
+div.menuBar span {
+  display: inline-block;
+  text-align: center;
+  width: calc(100% - 70px);
+  font-weight: bold;
+}
+div.menuBar a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: inline-block;
+}
+div.menuBar a.minimize {
+  background-image: url("../img/button_minimize.png");
+  width: 18px;
+  height: 19px;
+  text-indent: -900px;
+}
+div.menuBar a.close {
+  background-image: url("../img/button_close.png");
+  width: 18px;
+  height: 19px;
+  text-indent: -900px;
+}
+div.content {
+  background-color: #ebbcbc;
+  padding: 1em;
+}
+
+.content .folderIcon {
+  text-align: center;
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.content .progMenu {
+  margin-bottom: 0.5em;
+}
+.progMenu .menu {
+  padding: 0px;
+  background: none;
+  border: 0px;
+}
+.progMenu .menu .ui-menu li {
+  display: block;
+  padding: 0.5em;
+  min-width: 75px;
+  border: none;
+}
+.progMenu .menu li,
+.progMenu .menu li li {
+  width: auto;
+  display: inline-block;
+  border: none;
+}
+.progMenu .menu li a {
+  width: 100%;
+}
+.progMenu .menu li:hover a {
+  border: 0;
+}
+
+#calendar {
+  background-color: #9f66ca;
+  position: absolute;
+  bottom: 3.5em;
+  right: 0;
+  padding: 0.5em;
+  border: 1px solid #353535;
+}
+#calendar table td {
+  padding: 2px;
+  text-align: center;
+}
+.calendar-title {
+  font-weight: bold;
+  background-color: #c69ed1;
+}
+#calendar thead {
+  background-color: #c69ed1;
+}
+.day.today {
+  background-color: #ff0080;
+}
+.pad {
+  background-color: #c69ed1;
+}
+
+#taskBar {
+  background-color: #9f66ca;
+  padding: 0em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3em;
+}
+#rightTaskbar {
+  width: 100px;
+  right: 5px;
+  bottom: 2px;
+  position: fixed;
+  border: 1px solid #97133e;
+  padding: 0.5em;
+  text-align: right;
+  font-weight: bold;
+}
+#rightTaskbar img {
+  vertical-align: middle;
+}
+#toggleStart {
+  text-decoration: none;
+  font-weight: bold;
+  font-style: italic;
+  vertical-align: middle;
+  font-size: 1.5em;
+  color: #000;
+  display: table-cell;
+  width: 80px;
+  text-align: left;
+  height: 32px;
+  background-image: url("../img/pogoStart.png");
+  background-repeat: no-repeat;
+  padding-left: 45px;
+  padding-bottom: 10px;
+  border-left-width: 10px;
+  border-left-style: solid;
+  border-left-color: transparent;
+}
+#toggleStart:hover {
+  background-image: url("../img/pogoStartHover.png");
+  background-repeat: no-repeat;
+  background-color: #4f4e83;
+  color: #9f66ca;
+}
+.startMenuLinks.ui-widget.ui-widget-content,
+.startMenuLinks.ui-widget-content ul {
+  background-color: #4f4e83;
+  background: url("../img/startMenu_bg.png") repeat-y;
+  color: #f6efa6;
+  box-shadow: 2px 2px 5px 5px rgb(31, 19, 32, 0.3);
+  z-index: 1000;
+}
+.startMenuLinks.ui-widget-content a {
+  color: #f6efa6;
+}
+#startMenu.ui-menu .ui-menu-item-wrapper {
+  padding: 0;
+}
+.startMenuLinks.ui-menu .ui-menu-item-wrapper img,
+.startMenuLinks.ui-widget-content ul img {
+  vertical-align: middle;
+}
+.startMenuLinks {
+  position: fixed;
+  width: 250px;
+  background-color: #9f66ca;
+  bottom: 25px;
+  padding: 0px;
+  margin: 0px 0px 1em 0px;
+  color: #f6efa6;
+}
+.startMenuLinks ul {
+  margin: 0;
+}
+.startMenuLinks li {
+  list-style-type: none;
+  padding: 2px;
+  border-bottom: 1px solid #f6efa6;
+  padding: 3px 0.5em 3px 0.5em;
+  margin: 0;
+}
+.startMenuLinks li:hover {
+  background-color: #9f66ca;
+}
+.startMenuLinks a {
+  text-decoration: none;
+}
+.startMenuLinks ul.ui-menu {
+  width: 250px;
+}
+
+#desktop {
+  width: 1000px;
+  height: 1000px;
+}
+
+#minimizedApps {
+  margin: 0 0 0 120px;
+  border: 0px solid #000;
+  height: 100%;
+  padding: 0px;
+  width: calc(100% - 400px);
+  margin-top: -38px;
+}
+#minimizedApps li {
+  width: 150px;
+  bottom: 10px;
+  display: flex;
+  border: 1px solid #3b1397;
+  float: left;
+  padding: 0.5em;
+  margin-right: 5px;
+  background-color: #b472d3;
+  box-shadow: 1px 1px 0px 0px #a02a50, inset 1px 1px 0px 0px #f8c0d2,
+    inset -1px -1px 0px 0px #528d8f;
+}
+#minimizedApps li:hover {
+  background-color: #946fd1;
+}
+#minimizedApps a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #5b132a;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+#minimizedApps a:visited {
+  color: #5b132a;
+}
+
+.off {
+  display: none;
+}
+.clear {
+  width: 100%;
+  clear: both;
+  display: block;
+}
+.col-half {
+  width: 50%;
+  float: left;
+}
+.ascii {
+  white-space: pre;
+  line-height: 14px;
+}
+.flippedx {
+  transform: scaleX(-1);
+}
+.flippedy {
+  transform: scaleY(-1);
+}
+.flippedboth {
+  transform: scaleY(-1) scaleX(-1);
+}
+
+img.inline {
+  float: left;
+  width: 200px;
+  margin-right: 1em;
+  border: 1px solid #4f4e83;
+}
+
+#calculator {
+  width: 200px;
+}
+#calculator > .menuBar > span {
+  width: calc(100% - 70px);
+}
+#calculator > content {
+  background: #9f66ca;
+}
+#calculator #calc_result {
+  background-color: #fff;
+  padding: 0.5em;
+  display: block;
+  width: 90%;
+  border: 1px solid #353535;
+}
+#calculator input[type="button"],
+#calculator input[type="submit"] {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 0.5em;
+  background: #97133e;
+  color: #fff;
+  min-width: 40px;
+  width: 40px;
+}
+
+#calculator #calc-memory {
+  padding: 0.5em;
+  background-color: #fffce0;
+}
+#calculator #calc-memory h2 {
+  border-bottom: 1px solid #000;
+  width: 100%;
+  display: block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#calculator #calc-memory .calc-clear {
+  font-size: 0.8em;
+  font-style: italic;
+}

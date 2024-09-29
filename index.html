@@ -1,1 +1,360 @@
-Hello, world!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PogoOS - Break the Ghost in the Machine</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.0/themes/smoothness/jquery-ui.css" />
+  <link type="text/css" rel="stylesheet" href="css/main.css">
+  <link type="text/css" rel="stylesheet" href="css/prompts.css">
+
+  <script src="script/jquery/jquery-3.7.1.min.js"></script>
+  <script src="script/jquery/jquery-ui-1.14.0.custom/jquery-ui.js"></script>
+  <script>
+    // jQuery only works here 🙃
+    var dateOutput = "";
+    var month = "";
+    var day = "";
+    var zindex = 1;
+
+    $(function () {
+      // This gets the date and stores it in a variable. This will probably come in handy
+      var d = new Date();
+
+      month = d.getMonth() + 1;
+      day = d.getDate();
+
+      dateOutput = (day < 10 ? '0' : '') + day +
+        "/" + (month < 10 ? '0' : '') + month +
+        "/" + d.getFullYear();
+
+
+      function getCurrentDate() {
+        return dateOutput;
+      }
+
+      // Calendar toggle
+      $('#calendar').calendar({ date: getCurrentDate() });
+      $("#rightTaskbar").click(function () {
+        $("#calendar").toggle();
+      });
+
+      // Draggable windows & Window focus
+      $(".draggable").draggable({ scroll: false });
+      $(".draggable").mousedown(function () {
+        $(this).css({ "z-index": zindex + 1 });
+        zindex++;
+      });
+
+      // Closing windows
+      $(".close").click(function () {
+        $(this).parents(".window").hide();
+      });
+
+      // Minimizing windows
+      $(".minimize").click(function () {
+        var windowTitle = $(this).parent().children(".windowTitle");
+        var windowID = $(this).parents(".window").attr('id');
+
+        // Add the element in the taskbar
+        $("#minimizedApps").append("<li><a href='#' onclick=showWindow('" + windowID + "') class='" + windowID + "'>" + windowTitle.text() + "</a></li>");
+
+        $(this).parents(".window").hide();
+      });
+
+      // Toggling menus
+      $(".toggleMenu").click(function () {
+        $("#startMenu").toggle();
+      });
+
+      // TaskBar specific
+      $("#startMenu").menu();
+
+      $(".menu").menu();
+
+
+      // This is for the settings pane
+      $("#settings .bgPicker img").click(function () {
+        var url = $(this).attr("src");
+        $("body").css("background-image", "url(" + url + ")");
+        return false;
+      });
+
+    });
+  </script>
+
+  <!-- Other scripts go here when needed -->
+  <script src="script/calc.js"></script>
+  <script src="script/prompts.js"></script>
+
+  <!-- Black Magic zone -->
+  <script src="script/calendar.min.js"></script>
+
+</head>
+
+<body onload="startTime()">
+  <h1>Hello, world!</h1>
+  <p>look at this cool ass site :3</p>
+
+
+  <div id="desktop">
+    <!------  Desktop icons go here ------->
+    <div id="desktopIcons">
+      <div>
+        <p><a href="#" onclick="showWindow('welcomeTXT')"><img src="img/icons/icon_text_2x.png" alt="Welcome.txt"><br>
+            <span class="iconLabel">Welcome.txt</a></span></p>
+        <p><a href="#" onclick="showWindow('calculator')"><img src="img/icons/icon_calculator_2x.png"
+              alt="Calculator"><br>
+            <span class="iconLabel">Calculator</span></a></p>
+      </div>
+      <div>
+        <p><a href="#" id="prompts-link" onclick="showWindow('prompts')"><img src="img/icons/icon_prompts_2x.png"
+              alt="Daily Prompts"><br>
+            <span class="iconLabel">Daily Prompts</span></a></p>
+      </div>
+    </div>
+
+    <!------  Programs go here ------->
+
+
+    <!-- Welcome -->
+    <div class="window draggable" id="welcomeTXT">
+      <div class="menuBar">
+        <span id="introWindow" class="windowTitle">Welcome.txt</span>
+        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+      </div>
+
+      <div class="content">
+        <h1>Welcome to PogoOS</h1>
+
+        <p><img src="img/pogo_welcome.png"
+            alt="My first digital drawing of Pogo, color palette inspired by MonoKobold over on Twitter" class="inline">
+          PogoOS is what you're looking at here! I'm just here to learn html, css, jquery and all that jazz.
+          VERY heavily inspired by <a href="https://www.thefrugalgamer.net/programming/FrugalOS/">FrugalOS</a>, so check
+          that out if you find the time :)</p>
+        <p>
+          Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem
+          ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+          Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem
+          ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum.
+        </p>
+
+        <h2>Links:</h2>
+
+        <ul>
+          <li><a href="https://bastian.nu">
+              <img src="img/icons/icon_home_16.png" alt="icon">Bastian.nu</a></li>
+          <li><a href="mailto:contact@bastian.nu">
+              <img src="img/icons/icon_email_16.png" alt="icon">Email me with feedback</a></li>
+          <li><a href="https://github.com/bastianxx04/pogoOS">
+              <img src="img/icons/icon_github_16.png" alt="icon">Github Repository</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Prompts -->
+    <div class="window draggable off" id="prompts">
+      <div class="menuBar">
+        <span id="prompts-span" class="windowTitle">Daily Prompts</span>
+        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+      </div>
+
+      <div class="content">
+        <h2>Here's your daily inspiration</h2>
+        <a href="#" id="prompts-generate">Click here to generate</a>
+
+        <div id="prompts-palette">
+          <p><strong>Today's Palette</strong></p>
+          <ul>
+            <li id="prompts1" style="background-color: #fff;"><span>#</span></li>
+            <li id="prompts2" style="background-color: #fff;"><span>#</span></li>
+            <li id="prompts3" style="background-color: #fff;"><span>#</span></li>
+            <li id="prompts4" style="background-color: #fff;"><span>#</span></li>
+            <li id="prompts5" style="background-color: #fff;"><span>#</span></li>
+          </ul>
+          <span id="prompts-colors-text"></span>
+        </div>
+        <hr>
+
+        <div class="prompts-text" id="prompts-style">
+          <strong>Style</strong><br>
+          <span class="result"></span>
+        </div>
+
+        <div class="prompts-text" id="prompts-category">
+          <strong>Category</strong><br>
+          <span class="result"></span>
+        </div>
+
+        <div class="prompts-text" id="prompts-words">
+          <strong>Phrase</strong><br>
+          <span class="result"></span>
+        </div>
+
+        <div class="prompts-text" id="prompts-soundtrack">
+          <strong>Soundtrack</strong><br>
+          <span class="result"></span>
+        </div>
+        <hr>
+        <p>Go forth and create something cool!</p>
+      </div>
+    </div>
+
+    <!-- Caluclator -->
+    <div class="window draggable off" id="calculator">
+      <div class="menuBar">
+        <span id="calculator-span" class="windowTitle">Calculator</span>
+        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+      </div>
+
+      <div class="content">
+        <div class="progMenu">
+          <ul class="menu">
+            <li><a href="#">File</a>
+              <ul>
+                <li><a href="#" id="calc-show-mem">Memory</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <span id="calc_result">0</span><br>
+        <table>
+          <tr>
+            <td><input type="button" value="1"></td>
+            <td><input type="button" value="2"></td>
+            <td><input type="button" value="3"></td>
+            <td><input type="button" value="+"></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="4"></td>
+            <td><input type="button" value="5"></td>
+            <td><input type="button" value="6"></td>
+            <td><input type="button" value="-"></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="7"></td>
+            <td><input type="button" value="8"></td>
+            <td><input type="button" value="9"></td>
+            <td><input type="button" value="x"></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="0"></td>
+            <td><input type="button" value="."></td>
+            <td><input type="button" value="C"></td>
+            <td><input type="submit" value="="></td>
+          </tr>
+        </table>
+
+        <div id="calc-memory" class="off">
+          <h2>Memory</h2>
+          <a href="" class="clear-clear">(clear)</a><br>
+          <span id="calc-mem-display"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next cool app! -->
+    <!-- Not made yet :( -->
+  </div>
+
+  <!-- Start Menu -->
+  <ul id="startMenu" class="startMenuLinks" style="display: none">
+    <li><img src="img/icons/icon_folder_1x.png" alt="Folder"> Office
+      <ul>
+        <li>
+          <div><img src="img/icons/icon_calculator_1x.png" alt="icon"> <a href="#"
+              onclick="showWindow('calculator')">Calculator</a></div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div><img src="img/icons/icon_prompts_1x.png" alt="Daily Prompts"> <a href="#" id="prompts-link"
+          onclick="showWindow('prompts')">Daily Prompts</a></div>
+    </li>
+  </ul>
+
+  <!-- Calendar -->
+  <div id="calendar" class="off"></div>
+
+  <!-- Task Bar -->
+  <div id="taskBar">
+    <a href="#" class="toggleMenu" id="toggleStart">Start</a>
+
+    <ul id="minimizedApps">
+    </ul>
+
+    <div id="rightTaskbar">
+      <img src="img/icon_tb_clock.png" alt="">
+      <span id="rtClock"></span>
+    </div>
+  </div>
+
+
+  <!-- Helper functions -->
+  <script>
+
+    // Helper for showing windows
+    function showWindow(div) {
+      document.getElementById(div).style.display = "block";
+      divClass = "." + div;
+      document.getElementById(div).style.zindex = zindex + 1;
+      zindex++;
+
+      // Check if there's a matching element in the taskbar and remove it if there is
+      var classTest = findFirstChildByClass(document.getElementById("minimizedApps"), div);
+      if (classTest != null) {
+        classTest.parentNode.remove();
+      }
+      $("#startMenu").hide();
+      return false;
+    }
+
+    // Yoink: https://stackoverflow.com/a/25414784
+    // Also finds children of children
+    function findFirstChildByClass(element, className) {
+      var foundElement = null, found;
+      function recurse(element, className, found) {
+        for (var i = 0; i < element.childNodes.length && !found; i++) {
+          var el = element.childNodes[i];
+          var classes = el.className != undefined ? el.className.split(" ") : [];
+          for (var j = 0, jl = classes.length; j < jl; j++) {
+            if (classes[j] == className) {
+              found = true;
+              foundElement = element.childNodes[i];
+              break;
+            }
+          }
+          if (found)
+            break;
+          recurse(element.childNodes[i], className, found);
+        }
+      }
+      recurse(element, className, false);
+      return foundElement;
+    }
+
+    // For the clock at the bottom
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+
+      m = fixLength(m);
+      s = fixLength(s);
+
+      document.getElementById('rtClock').innerHTML = h + ":" + m + ":" + s;
+      setTimeout(startTime, 1000);
+    }
+
+    function fixLength(i) {
+      if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+      return i;
+    }
+  </script>
+</body>
+
+</html>
