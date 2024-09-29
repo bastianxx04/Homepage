@@ -370,11 +370,6 @@ div.content .progMenu {
   width: 250px;
 }
 
-#desktop {
-  width: 1000px;
-  height: 1000px;
-}
-
 #minimizedApps {
   margin: 0 0 0 120px;
   border: 0px solid #000;
