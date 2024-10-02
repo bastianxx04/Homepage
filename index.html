@@ -3,6 +3,8 @@
 
 <head>
   <title>PogoOS - Break the Ghost in the Machine</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -59,7 +61,7 @@
         var windowID = $(this).parents(".window").attr('id');
 
         // Add the element in the taskbar
-        $("#minimizedApps").append("<li><a href='#' onclick=showWindow('" + windowID + "') class='" + windowID + "'>" + windowTitle.text() + "</a></li>");
+        $("#minimizedApps").append("<li><a onclick=reviveWindow('" + windowID + "') class='" + windowID + "'>" + windowTitle.text() + "</a></li>");
 
         $(this).parents(".window").hide();
       });
@@ -71,9 +73,11 @@
 
       // TaskBar specific
       $("#startMenu").menu();
-
       $(".menu").menu();
 
+      $("#desktop").mouseup(function () {
+        $("#startMenu").hide()
+      })
 
       // This is for the settings pane
       $("#settings .bgPicker img").click(function () {
@@ -90,27 +94,26 @@
   <script src="script/prompts.js"></script>
 
   <!-- Black Magic zone -->
-  <script src="script/calendar.min.js"></script>
+  <script src="script/calendar.min.js"></script> <!-- https://github.com/benhall14/jquery-calendar -->
 
 </head>
 
 <body onload="startTime()">
-  <h1>Hello, world!</h1>
-  <p>look at this cool ass site :3</p>
 
 
   <div id="desktop">
+    <h1>Hello, world!</h1>
+    <p>look at this cool ass site :3</p>
     <!------  Desktop icons go here ------->
     <div id="desktopIcons">
       <div>
-        <p><a href="#" onclick="showWindow('welcomeTXT')"><img src="img/icons/icon_text_2x.png" alt="Welcome.txt"><br>
+        <p><a onclick="showWindow('welcomeTXT')"><img src="img/icons/icon_text_2x.png" alt="Welcome.txt"><br>
             <span class="iconLabel">Welcome.txt</a></span></p>
-        <p><a href="#" onclick="showWindow('calculator')"><img src="img/icons/icon_calculator_2x.png"
-              alt="Calculator"><br>
+        <p><a onclick="showWindow('calculator')"><img src="img/icons/icon_calculator_2x.png" alt="Calculator"><br>
             <span class="iconLabel">Calculator</span></a></p>
       </div>
       <div>
-        <p><a href="#" id="prompts-link" onclick="showWindow('prompts')"><img src="img/icons/icon_prompts_2x.png"
+        <p><a id="prompts-link" onclick="showWindow('prompts')"><img src="img/icons/icon_prompts_2x.png"
               alt="Daily Prompts"><br>
             <span class="iconLabel">Daily Prompts</span></a></p>
       </div>
@@ -120,10 +123,10 @@
 
 
     <!-- Welcome -->
-    <div class="window draggable" id="welcomeTXT">
+    <div class="window draggable" id="welcomeTXT" style="left: 60px; top: 100px;">
       <div class="menuBar">
         <span id="introWindow" class="windowTitle">Welcome.txt</span>
-        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+        <a class="minimize">_</a> | <a class="close">X</a>
       </div>
 
       <div class="content">
@@ -158,12 +161,12 @@
     <div class="window draggable off" id="prompts">
       <div class="menuBar">
         <span id="prompts-span" class="windowTitle">Daily Prompts</span>
-        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+        <a class="minimize">_</a> | <a class="close">X</a>
       </div>
 
       <div class="content">
         <h2>Here's your daily inspiration</h2>
-        <a href="#" id="prompts-generate">Click here to generate</a>
+        <a id="prompts-generate">Click here to generate</a>
 
         <div id="prompts-palette">
           <p><strong>Today's Palette</strong></p>
@@ -206,7 +209,7 @@
     <div class="window draggable off" id="calculator">
       <div class="menuBar">
         <span id="calculator-span" class="windowTitle">Calculator</span>
-        <a href="#" class="minimize">_</a> | <a href="#" class="close">X</a>
+        <a class="minimize">_</a> | <a class="close">X</a>
       </div>
 
       <div class="content">
@@ -214,7 +217,7 @@
           <ul class="menu">
             <li><a href="#">File</a>
               <ul>
-                <li><a href="#" id="calc-show-mem">Memory</a></li>
+                <li><a id="calc-show-mem">Memory</a></li>
               </ul>
             </li>
           </ul>
@@ -271,7 +274,7 @@
       </ul>
     </li>
     <li>
-      <div><img src="img/icons/icon_prompts_1x.png" alt="Daily Prompts"> <a href="#" id="prompts-link"
+      <div><img src="img/icons/icon_prompts_1x.png" alt="Daily Prompts"> <a id="prompts-link"
           onclick="showWindow('prompts')">Daily Prompts</a></div>
     </li>
   </ul>
@@ -296,12 +299,31 @@
   <!-- Helper functions -->
   <script>
 
+    function rand(min, max) {
+      return Math.random() * (max - min) + min
+    }
+
     // Helper for showing windows
     function showWindow(div) {
-      document.getElementById(div).style.display = "block";
-      divClass = "." + div;
-      document.getElementById(div).style.zindex = zindex + 1;
+      return showWindowInternal(div, true)
+    }
+
+    function reviveWindow(div) {
+      return showWindowInternal(div, false)
+    }
+
+    function showWindowInternal(div, randomLocation) {
+      var element = document.getElementById(div)
+      element.style.display = "block";
+      element.style['z-index'] = zindex + 1;
       zindex++;
+
+      if (randomLocation) {
+        const randomLeftValue = Number.parseInt(rand(10, document.body.scrollWidth - 610));
+        const randomTopValue = Number.parseInt(rand(10, document.body.scrollHeight - 310));
+        element.style.left = `${randomLeftValue}px`;
+        element.style.top = `${randomTopValue}px`;
+      }
 
       // Check if there's a matching element in the taskbar and remove it if there is
       var classTest = findFirstChildByClass(document.getElementById("minimizedApps"), div);
