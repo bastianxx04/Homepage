@@ -1,0 +1,31 @@
+div.menuBar {
+  border-bottom: 1px solid #353535;
+  background-color: #9f66ca;
+  padding: 3px;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 0px 0px #f6ab6c, inset -1px -1px 0px 0px #97133e;
+}
+div.menuBar span {
+  display: inline-block;
+  text-align: center;
+  width: calc(100% - 70px);
+  font-weight: bold;
+}
+div.menuBar a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: inline-block;
+}
+div.menuBar a.minimize {
+  background-image: url("../img/button_minimize.png");
+  width: 18px;
+  height: 19px;
+  text-indent: -900px;
+}
+div.menuBar a.close {
+  background-image: url("../img/button_close.png");
+  width: 18px;
+  height: 19px;
+  text-indent: -900px;
+}

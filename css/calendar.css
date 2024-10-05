@@ -1,0 +1,25 @@
+#calendar {
+  background-color: #9f66ca;
+  position: absolute;
+  bottom: 3.5em;
+  right: 0;
+  padding: 0.5em;
+  border: 1px solid #353535;
+}
+#calendar table td {
+  padding: 2px;
+  text-align: center;
+}
+.calendar-title {
+  font-weight: bold;
+  background-color: #c69ed1;
+}
+#calendar thead {
+  background-color: #c69ed1;
+}
+.day.today {
+  background-color: #ff0080;
+}
+.pad {
+  background-color: #c69ed1;
+}

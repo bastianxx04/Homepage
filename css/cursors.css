@@ -1,0 +1,10 @@
+/* ==== Cursor styles ==== */
+* {
+  cursor: url("../img/cursor_default.png") 2 2, default;
+}
+a {
+  cursor: url("../img/cursor_pointer.png") 2 2, pointer;
+}
+.target-element {
+  cursor: url("../img/cursor_crosshair.png") 18 18, crosshair;
+}

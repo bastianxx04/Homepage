@@ -1,0 +1,28 @@
+input[type="button"],
+input[type="file"] {
+  background: #9f66ca;
+  border: 1px solid #97133e;
+  border-radius: 8px;
+  font-family: monospace;
+  padding: 0.3em;
+  margin-bottom: 0.5em;
+  min-width: 75px;
+  box-shadow: inset 1px 1px 0px 0px #f6ab6c, inset -1px -1px 0px 0px #97133e;
+}
+input[type="button"]:hover {
+  cursor: url("../img/cursor_pointer.png"), pointer;
+}
+input[type="text"] {
+  font-family: monospace;
+  padding: 0.3em;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+}
+select {
+  font-family: monospace;
+  font-size: 1em;
+  background-color: #f6ab6c;
+  padding: 0.4em;
+  border: 1px solid #000;
+  border-radius: 10px;
+}

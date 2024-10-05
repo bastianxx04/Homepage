@@ -1,0 +1,42 @@
+div#desktopIcons {
+  float: right;
+  text-align: center;
+  padding: 0.5em;
+  margin-bottom: 1.5em;
+}
+#desktopIcons div {
+  float: right;
+  margin-right: 1em;
+}
+#desktopIcons p {
+  display: block;
+}
+#desktopIcons span,
+#desktopIcons a span {
+  background-color: #ffffff;
+  border: 1px solid #353535;
+  text-decoration: none;
+  padding: 2px;
+}
+
+/* ========= Windows ======== */
+div.window {
+  border: 1px solid #353535;
+  width: 600px;
+  position: absolute;
+  height: auto;
+  box-shadow: 1px 1px 0px 0px #a02a50, -1px -1px 0px 0px #a02a50,
+    2px 2px 5px 5px rgb(31, 19, 32, 0.3);
+}
+
+div.content {
+  background-color: #ebbcbc;
+  padding: 1em;
+}
+
+.content .folderIcon {
+  text-align: center;
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+}

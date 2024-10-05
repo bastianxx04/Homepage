@@ -1,0 +1,72 @@
+/* ======== jQuery overrides go here ======== */
+.ui-dialog-titlebar.ui-widget-header {
+  background: #9f66ca url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50%
+    50% repeat-x;
+}
+.ui-widget-header {
+  background: #9f66ca;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  background: #f6efa6;
+}
+.ui-tabs .ui-tabs-nav li {
+  background: #f39bb7;
+}
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: 0px solid #2d2d2d;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  border: 1px solid #2d2d2d;
+}
+.ui-widget.ui-widget-content {
+  background-color: #f6efa6;
+  border: 1px solid #2d2d2d;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: monospace;
+}
+
+.ui-widget {
+  font-family: monospace;
+}
+
+.ui-widget input[type="button"] {
+  background: #9f66ca;
+  border: 1px solid #97133e;
+  border-radius: 8px;
+  font-family: monospace;
+  padding: 0.3em;
+  min-width: 75px;
+}
+.ui-widget input[type="button"]:hover {
+  background-color: #faa5c1;
+}
+
+.ui-accordion .ui-accordion-header {
+  background: #f6ab6c;
+  font-family: monospace;
+}
+
+.startMenuLinks .ui-state-active {
+  background: #9f66ca;
+  border: 0px;
+  margin: 0px;
+}
+
+.ui-draggable,
+.ui-dialog-titlebar {
+  cursor: url("../img/cursor_move.png") 18 18, move;
+}

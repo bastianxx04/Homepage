@@ -1,0 +1,26 @@
+div.content .progMenu {
+  margin-bottom: 0.5em;
+}
+.progMenu .menu {
+  padding: 0px;
+  background: none;
+  border: 0px;
+}
+.progMenu .menu .ui-menu li {
+  display: block;
+  padding: 0.5em;
+  min-width: 75px;
+  border: none;
+}
+.progMenu .menu li,
+.progMenu .menu li li {
+  width: auto;
+  display: inline-block;
+  border: none;
+}
+.progMenu .menu li a {
+  width: 100%;
+}
+.progMenu .menu li:hover a {
+  border: 0;
+}
