@@ -68,7 +68,7 @@ html .ui-button.ui-state-disabled:active {
 
 .ui-draggable,
 .ui-dialog-titlebar {
-  cursor: url("../img/cursor_move.png"), move;
+  cursor: url("../img/cursor_move.png") 18 18, move;
 }
 
 /* ======== My styles start here ======== */
@@ -88,13 +88,13 @@ html {
 
 /* ==== Cursor styles ==== */
 * {
-  cursor: url("../img/cursor_default.png"), default;
+  cursor: url("../img/cursor_default.png") 2 2, default;
 }
 a {
-  cursor: url("../img/cursor_pointer.png"), pointer;
+  cursor: url("../img/cursor_pointer.png") 2 2, pointer;
 }
 .target-element {
-  cursor: url("../img/cursor_crosshair.png"), crosshair;
+  cursor: url("../img/cursor_crosshair.png") 18 18, crosshair;
 }
 
 body {
